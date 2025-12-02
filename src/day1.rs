@@ -44,16 +44,10 @@ pub fn answer(input: &str, part: Part) -> Result<i32, Box<dyn Error>> {
             password += if curr > 0 {
                 curr / DIAL_SIZE
             } else if curr < 0 {
-                if prev == 0 && curr.abs() < DIAL_SIZE {
-                    0
-                } else {
-                    (curr.abs() as f64 / DIAL_SIZE as f64).ceil() as i32
-                }
-            } else if curr == 0 {
-                1
+                curr.abs() / DIAL_SIZE + if prev > 0 { 1 } else { 0 }
             } else {
-                todo!()
-            };
+                1
+            }
         }
         curr = curr.rem_euclid(DIAL_SIZE);
         if part == Part::One && curr == 0 {
@@ -89,6 +83,11 @@ mod tests {
     }
 
     #[test]
+    fn part2_challenge() {
+        assert_eq!(answer(CHALLENGE_INPUT, Part::Two).unwrap(), 6295);
+    }
+
+    #[test]
     fn part2_distance_over_dial_size() {
         assert_eq!(
             answer(
@@ -102,11 +101,12 @@ L268
 R18
 R200
 L300
-L99"#,
+L150
+L49"#,
                 Part::Two
             )
             .unwrap(),
-            21
+            22
         );
     }
 }
