@@ -73,11 +73,11 @@ mod tests {
 
     #[test]
     fn part2_challenge() {
-        assert_eq!(answer(CHALLENGE_INPUT, Part::Two).unwrap(), 40055209690);
+        assert_eq!(answer(CHALLENGE_INPUT, Part::Two).unwrap(), 50857215650);
     }
 
     #[test]
     fn part2_odd_number_of_digits() {
-        assert_eq!(answer("100000000-300000000", Part::Two).unwrap(), 21);
+        assert_eq!(answer("100000000-100100100", Part::Two).unwrap(), 100100100);
     }
 }
