@@ -1,4 +1,4 @@
-use advent_of_code::{Part, day1};
+use advent_of_code::{Part, day1, day2};
 use std::{
     error::Error,
     fmt::{Display, Write},
@@ -53,10 +53,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     let input = read_to_string(
         Path::new("input").join(cli.day.to_string() + "." + &cli.input.to_string()),
     )?;
-    let answer = match cli.day {
-        Day::One => day1::answer(&input, cli.part)?,
-        Day::Two => todo!(),
+    match cli.day {
+        Day::One => println!("{}", day1::answer(&input, cli.part)?),
+        Day::Two => println!("{}", day2::answer(&input, cli.part)?),
     };
-    dbg!(answer);
     Ok(())
 }
