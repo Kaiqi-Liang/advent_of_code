@@ -62,30 +62,9 @@ pub fn answer(input: &str, part: Part) -> Result<i32, Box<dyn Error>> {
 
 #[cfg(test)]
 mod tests {
-    use crate::{Part, day1::answer};
+    use crate::{Part, day1::answer, example_challenge_2_parts_tests};
 
-    const EXAMPLE_INPUT: &str = include_str!("../input/1.0");
-    const CHALLENGE_INPUT: &str = include_str!("../input/1.1");
-
-    #[test]
-    fn part1_example() {
-        assert_eq!(answer(EXAMPLE_INPUT, Part::One).unwrap(), 3);
-    }
-
-    #[test]
-    fn part1_challenge() {
-        assert_eq!(answer(CHALLENGE_INPUT, Part::One).unwrap(), 1052);
-    }
-
-    #[test]
-    fn part2_example() {
-        assert_eq!(answer(EXAMPLE_INPUT, Part::Two).unwrap(), 6);
-    }
-
-    #[test]
-    fn part2_challenge() {
-        assert_eq!(answer(CHALLENGE_INPUT, Part::Two).unwrap(), 6295);
-    }
+    example_challenge_2_parts_tests!(1, 3, 1052, 6, 6295);
 
     #[test]
     fn part2_distance_over_dial_size() {

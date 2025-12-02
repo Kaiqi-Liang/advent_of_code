@@ -1,4 +1,4 @@
-use advent_of_code::{Part, day1, day2};
+use advent_of_code::{Part, day1, day2, day3};
 use std::{
     error::Error,
     fmt::{Display, Write},
@@ -22,6 +22,7 @@ struct Cli {
 enum Day {
     One,
     Two,
+    Three,
 }
 
 impl Display for Day {
@@ -29,6 +30,7 @@ impl Display for Day {
         match self {
             Day::One => f.write_char('1'),
             Day::Two => f.write_char('2'),
+            Day::Three => f.write_char('3'),
         }
     }
 }
@@ -56,6 +58,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     match cli.day {
         Day::One => println!("{}", day1::answer(&input, cli.part)?),
         Day::Two => println!("{}", day2::answer(&input, cli.part)?),
+        Day::Three => println!("{}", day3::answer(&input, cli.part)?),
     };
     Ok(())
 }

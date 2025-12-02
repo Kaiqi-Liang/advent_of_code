@@ -51,30 +51,9 @@ pub fn answer(input: &str, part: Part) -> Result<u128, Box<dyn Error>> {
 
 #[cfg(test)]
 mod tests {
-    use crate::{Part, day2::answer};
+    use crate::{Part, day2::answer, example_challenge_2_parts_tests};
 
-    const EXAMPLE_INPUT: &str = include_str!("../input/2.0");
-    const CHALLENGE_INPUT: &str = include_str!("../input/2.1");
-
-    #[test]
-    fn part1_example() {
-        assert_eq!(answer(EXAMPLE_INPUT, Part::One).unwrap(), 1227775554);
-    }
-
-    #[test]
-    fn part1_challenge() {
-        assert_eq!(answer(CHALLENGE_INPUT, Part::One).unwrap(), 40055209690);
-    }
-
-    #[test]
-    fn part2_example() {
-        assert_eq!(answer(EXAMPLE_INPUT, Part::Two).unwrap(), 4174379265);
-    }
-
-    #[test]
-    fn part2_challenge() {
-        assert_eq!(answer(CHALLENGE_INPUT, Part::Two).unwrap(), 50857215650);
-    }
+    example_challenge_2_parts_tests!(2, 1227775554, 40055209690, 4174379265, 50857215650);
 
     #[test]
     fn part2_odd_number_of_digits() {
