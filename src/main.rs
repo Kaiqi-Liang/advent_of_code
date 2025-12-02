@@ -20,8 +20,11 @@ struct Cli {
 
 #[derive(Clone, ValueEnum)]
 enum Day {
+    #[value(name = "1")]
     One,
+    #[value(name = "2")]
     Two,
+    #[value(name = "3")]
     Three,
 }
 
@@ -37,7 +40,9 @@ impl Display for Day {
 
 #[derive(Clone, ValueEnum)]
 enum Input {
+    #[value(alias = "eg")]
     Example,
+    #[value(alias = "ch")]
     Challenge,
 }
 

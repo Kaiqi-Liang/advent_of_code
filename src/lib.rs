@@ -6,7 +6,9 @@ pub mod day3;
 
 #[derive(Clone, ValueEnum, PartialEq)]
 pub enum Part {
+    #[value(name = "1")]
     One,
+    #[value(name = "2")]
     Two,
 }
 
