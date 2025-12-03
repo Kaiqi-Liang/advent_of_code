@@ -24,8 +24,8 @@ pub fn answer(input: &str, part: Part) -> Result<u128, Box<dyn Error>> {
                 .iter()
                 .max()
                 .expect("Each line of ratings must not be empty");
-            for j in 0..ratings.len() {
-                if j >= highest_rating_index && ratings[j] == *highest_rating {
+            for (j, rating) in ratings.iter().enumerate() {
+                if j >= highest_rating_index && rating == highest_rating {
                     highest_rating_index = j + 1;
                     break;
                 }
