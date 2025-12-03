@@ -4,10 +4,15 @@ use std::{error::Error, fs::read_to_string, path::Path};
 
 #[derive(Parser)]
 pub struct Cli {
+    /// Day to run
     #[clap(short, long)]
     day: Day,
+
+    /// Part to run
     #[clap(short, long)]
     part: Part,
+
+	/// Input to use
     #[clap(short, long)]
     input: Input,
 }
