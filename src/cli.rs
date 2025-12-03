@@ -1,11 +1,6 @@
 use advent_of_code::{Day, Part};
 use clap::{Parser, ValueEnum};
-use std::{
-    error::Error,
-    fmt::{Display, Write},
-    fs::read_to_string,
-    path::Path,
-};
+use std::{error::Error, fs::read_to_string, path::Path};
 
 #[derive(Parser)]
 pub struct Cli {
@@ -17,21 +12,13 @@ pub struct Cli {
     input: Input,
 }
 
-#[derive(Clone, ValueEnum)]
+#[derive(Clone, ValueEnum, strum::Display)]
+#[strum(serialize_all = "lowercase")]
 enum Input {
     #[value(alias = "eg")]
     Example,
     #[value(alias = "ch")]
     Challenge,
-}
-
-impl Display for Input {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Input::Example => f.write_char('0'),
-            Input::Challenge => f.write_char('1'),
-        }
-    }
 }
 
 pub fn run(cli: Cli) -> Result<(), Box<dyn Error>> {

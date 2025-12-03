@@ -1,6 +1,5 @@
-use std::error::Error;
-
 use crate::Part;
+use std::error::Error;
 
 pub fn answer(input: &str, part: Part) -> Result<u128, Box<dyn Error>> {
     let mut total = 0;

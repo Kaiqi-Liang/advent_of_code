@@ -1,6 +1,5 @@
-use std::error::Error;
-
 use crate::Part;
+use std::error::Error;
 
 const DIAL_SIZE: i32 = 100;
 

@@ -1,6 +1,5 @@
-use std::{collections::HashSet, error::Error};
-
 use crate::Part;
+use std::{collections::HashSet, error::Error};
 
 pub fn answer(input: &str, part: Part) -> Result<u128, Box<dyn Error>> {
     let mut sum = 0;

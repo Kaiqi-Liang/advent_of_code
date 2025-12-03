@@ -1,7 +1,6 @@
-use std::{error::Error, fmt::Display};
-
 use clap::ValueEnum;
 use paste::paste;
+use std::{error::Error, fmt::Display};
 
 macro_rules! define_days {
     ($($name:ident => $num:literal,)*) => {
@@ -59,8 +58,8 @@ pub enum Part {
 #[macro_export]
 macro_rules! example_challenge_2_parts_tests {
     ($day:literal, $part1_example_answer:literal, $part1_challenge_answer:literal, $part2_example_answer:literal, $part2_challenge_answer:literal) => {
-        const EXAMPLE_INPUT: &str = include_str!(concat!("../input/", $day, ".0"));
-        const CHALLENGE_INPUT: &str = include_str!(concat!("../input/", $day, ".1"));
+        const EXAMPLE_INPUT: &str = include_str!(concat!("../input/", $day, ".example"));
+        const CHALLENGE_INPUT: &str = include_str!(concat!("../input/", $day, ".challenge"));
 
         #[test]
         fn part1_example() {
