@@ -1,9 +1,51 @@
+use std::{error::Error, fmt::Display};
+
 use clap::ValueEnum;
-mod day;
-pub mod day1;
-pub mod day2;
-pub mod day3;
-pub mod day4;
+use paste::paste;
+
+macro_rules! define_days {
+    ($($name:ident => $num:literal,)*) => {
+        $(
+            paste! { pub mod [<day $num>]; }
+        )*
+
+        #[derive(Clone, ValueEnum)]
+        pub enum Day {
+            $(
+                #[value(name = stringify!($num))]
+                $name,
+            )*
+        }
+
+        impl Display for Day {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                match self {
+                    $(
+                        Day::$name => f.write_str(stringify!($num)),
+                    )*
+                }
+            }
+        }
+
+        impl Day {
+            pub fn run(&self, input: &str, part: Part) -> Result<(), Box<dyn Error>> {
+                match self {
+                    $(
+                        Day::$name => println!("{}", paste! { [<day $num>]::answer(input, part)? }),
+                    )*
+                }
+                Ok(())
+            }
+        }
+    };
+}
+
+define_days! {
+    One => 1,
+    Two => 2,
+    Three => 3,
+    Four => 4,
+}
 
 #[derive(Clone, ValueEnum, PartialEq)]
 pub enum Part {

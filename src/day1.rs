@@ -42,9 +42,9 @@ pub fn answer(input: &str, part: Part) -> Result<i32, Box<dyn Error>> {
         }
         if part == Part::Two {
             password += match curr.cmp(&0) {
-                std::cmp::Ordering::Greater => curr / DIAL_SIZE,
                 std::cmp::Ordering::Less => curr.abs() / DIAL_SIZE + if prev > 0 { 1 } else { 0 },
                 std::cmp::Ordering::Equal => 1,
+                std::cmp::Ordering::Greater => curr / DIAL_SIZE,
             }
         }
         curr = curr.rem_euclid(DIAL_SIZE);

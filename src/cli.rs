@@ -1,30 +1,24 @@
-use advent_of_code::{Part, day1, day2, day3, day4, define_days};
+use advent_of_code::{Day, Part};
 use clap::{Parser, ValueEnum};
-use paste::paste;
 use std::{
     error::Error,
     fmt::{Display, Write},
+    fs::read_to_string,
+    path::Path,
 };
-
-define_days! {
-    One => 1
-    Two => 2
-    Three => 3
-    Four => 4
-}
 
 #[derive(Parser)]
 pub struct Cli {
     #[clap(short, long)]
-    pub day: Day,
+    day: Day,
     #[clap(short, long)]
-    pub part: Part,
+    part: Part,
     #[clap(short, long)]
-    pub input: Input,
+    input: Input,
 }
 
 #[derive(Clone, ValueEnum)]
-pub enum Input {
+enum Input {
     #[value(alias = "eg")]
     Example,
     #[value(alias = "ch")]
@@ -38,4 +32,13 @@ impl Display for Input {
             Input::Challenge => f.write_char('1'),
         }
     }
+}
+
+pub fn run(cli: Cli) -> Result<(), Box<dyn Error>> {
+    cli.day.run(
+        &read_to_string(
+            Path::new("input").join(cli.day.to_string() + "." + &cli.input.to_string()),
+        )?,
+        cli.part,
+    )
 }
