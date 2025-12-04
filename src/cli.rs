@@ -12,7 +12,7 @@ pub struct Cli {
     #[clap(short, long)]
     part: Part,
 
-	/// Input to use
+    /// Input to use
     #[clap(short, long)]
     input: Input,
 }
